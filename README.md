@@ -1,2 +1,3 @@
 # JavaScript
-Thia is the javascript learning course.
+Thia is my javascript repo
+
