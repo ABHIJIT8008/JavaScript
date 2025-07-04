@@ -1,5 +1,0 @@
-{
-  "Text Input": {
-    "inputTypes": ["text", "email", "number","password"]
-  }
-}
