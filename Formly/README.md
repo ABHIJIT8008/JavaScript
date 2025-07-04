@@ -1,3 +1,5 @@
+This is a JavaScript Project based on ReactJS Library. Through this you can create a form (like Google Form) providing different types of components to it according to the requirements then you can manage its data which it get from the uploader or the target user. 
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
