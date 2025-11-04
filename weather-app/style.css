@@ -1,21 +1,44 @@
+/* --- Reset and Font Import (Kept from original) --- */
 *{
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
-body{
-    background: #222;
+
+/* --- CSS Variables for Easy Theming --- */
+:root {
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --text-color: #fff;
+    --input-bg: rgba(255, 255, 255, 0.2);
+    --input-text: #eee;
+    --placeholder-text: #ccc;
+    --hover-bg: rgba(255, 255, 255, 0.3);
+    --error-color: #ffda79; /* Brighter for visibility */
 }
+
+body{
+    /* New, more dynamic background for the glass effect */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh; /* Ensures gradient covers full height */
+}
+
 .card{
     width:90%;
     max-width: 470px;
-    background: linear-gradient(135deg, #00feba, #5b548a);
-    color: #fff;
     margin: 100px auto 0;
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
+    color: var(--text-color);
+    
+    /* --- Modern Glassmorphism Effect --- */
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .search{
@@ -24,44 +47,69 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+
 .search input{
     border: 0;
     outline: 0;
-    background: #ebfffc;
-    color: #555;
+    background: var(--input-bg); /* Translucent */
+    color: var(--input-text);
     padding: 10px 25px;
     height: 60px;
     border-radius: 30px;
     flex: 1;
     margin-right: 16px;
     font-size: 18px;
+    transition: all 0.3s ease; /* Smooth transition for focus */
 }
+
+/* --- Styling for the placeholder text --- */
+.search input::placeholder{
+    color: var(--placeholder-text);
+}
+
+/* --- Focus effect for the input --- */
+.search input:focus{
+    background: var(--hover-bg);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
 .search button{
     border: 0;
     outline: 0;
-    background: #ebfffc;
+    background: var(--input-bg); /* Translucent */
     border-radius: 50%;
     width: 60px;
     height : 60px;
     cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover */
 }
 
 .search button img{
     width: 16px;
 }
-.Weather-icon{
+
+/* --- Hover effect for the button --- */
+.search button:hover{
+    background: var(--hover-bg);
+}
+
+/* --- FIX: Corrected selector from .Weather-icon to .weather-icon --- */
+.weather-icon{
     width: 170px;
     margin-top: 30px;
 }
+
 .weather h1{
     font-size: 80px;
     font-weight: 500;
 }
+
 .weather h2{
     font-size: 45px;
     font-weight: 400;
     margin-top:-10px;
 }
+
 .details{
     display: flex;
     align-items: center;
@@ -69,26 +117,48 @@ body{
     padding: 0 20px;
     margin-top: 50px;
 }
+
 .col{
     display: flex;
     align-items: center;
     text-align: left;
 }
+
 .col img{
     width: 40px;
     margin-right: 10px;
 }
+
 .humidity, .wind{
     font-size: 28px;
     margin-top: -6px;
 }
+
 .weather{
     display: none;
+    /* Add a subtle fade-in animation */
+    animation: fadeIn 0.75s ease-in-out;
 }
+
 .error{
     text-align: left;
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 16px; /* Larger */
+    font-weight: 500; /* Bolder */
     margin-top: 10px;
     display: none;
+    color: var(--error-color); /* More visible */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* --- Keyframe animation for the weather details --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
